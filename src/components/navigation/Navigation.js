@@ -15,10 +15,12 @@ import {
     Mobile,
     ActionsContainer,
 } from "./style"
+import logo from '../../images/logos/leadersnavigator-mockup.png'
 
 const NAV_ITEMS = [
     "Digital Innovation", "Digital Leadership", "Digital Business Analysis"
 ]
+
 
 
 export default class Navigation extends Component {
@@ -26,6 +28,7 @@ export default class Navigation extends Component {
         mobileMenuOpen: false,
         hasScrolled: false,
     }
+
 
     componentDidMount() {
         window.addEventListener("scroll", this.handleScroll)
@@ -80,8 +83,12 @@ export default class Navigation extends Component {
                 <StyledContainer>
                     <Brand>
                         <Link to='/'>
-                            Leadersnavigator
-                        </Link>
+
+
+                            <img style={{
+                                maxWidth: 200,
+                                marginBottom: 0
+                            }} src={logo} alt="Logo" /> </Link>
                         {/* <Scrollspy offset={-64} item={["top"]} currentClassName="active">
                             <AnchorLink href="#top" onClick={this.closeMobileMenu}>
                                 Leadersnavigator

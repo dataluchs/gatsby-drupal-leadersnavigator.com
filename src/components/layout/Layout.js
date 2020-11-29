@@ -20,7 +20,7 @@ const Layout = ({ children, data }) => (
       <GlobalStyles />
       <Navigation />
       <div style={{
-        marginTop: 100
+        marginTop: 85
       }}>
         {children}
       </div>

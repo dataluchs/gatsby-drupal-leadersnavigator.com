@@ -3,7 +3,8 @@ import styled from "styled-components"
 import { graphql, useStaticQuery, Link } from "gatsby"
 import Img from "gatsby-image"
 import { Container } from "../Global"
-
+import Typed from 'react-typed';
+import 'react-typed/dist/animatedCursor.css';
 const Header = () => {
 
 
@@ -27,7 +28,28 @@ const Header = () => {
           <HeaderTextGroup>
             {/* <Subtitle> </Subtitle> */}
             <h1> Your knowledge hub <br />
-                        for Digital Transformation</h1>
+                        for <span>
+                <Typed
+                  strings={
+                    [" Digital Leadership.",
+                      " Digital Innovation.",
+                      " Digital Workplace.",
+                      " Digital Transformation.",
+                      " Digital Business Models.",
+                      " Digital Business Automation.",
+                      " Digital Business Analysis.",
+                      " Digital Technology.",
+                      " Data-Driven Business.",
+                      " Data Analysis.",
+                    ]}
+                  typeSpeed={50}
+                  backSpeed={50}
+                  backDelay={1500}
+                  loop
+                  smartBackspace
+                />
+              </span>
+            </h1>
           </HeaderTextGroup>
         </Flex>
       </Container>
@@ -44,7 +66,7 @@ const HeaderWrapper = styled.header`
 background: #0F2027;  /* fallback for old browsers */
 background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
+padding: 100px 0px;
   position: relative;
   
   @media (max-width: ${props => props.theme.screen.md}) {
@@ -83,9 +105,9 @@ const HeaderTextGroup = styled.div`
   h1 {
     margin: 0 0 24px;
     padding-top:10px;
-    line-height: 3.6rem;
-    font-size: 3rem;
-    font-weight: 300;
+    line-height: 3.1rem;
+    font-size: 2.4rem;
+    font-weight: 500;
     color: ${props => props.theme.color.white.regular};
      @media only screen and (max-width:480px) {
     font-size: 1.7rem;
