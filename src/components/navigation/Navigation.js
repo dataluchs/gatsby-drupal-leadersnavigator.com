@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react"
 import AnchorLink from "react-anchor-link-smooth-scroll"
 import Scrollspy from "react-scrollspy"
 import { Menu, X } from "react-feather"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, Link } from "gatsby"
 import Img from "gatsby-image"
 import { Container } from "../Global"
 import {
@@ -79,13 +79,15 @@ export default class Navigation extends Component {
             <Nav {...this.props} scrolled={this.state.hasScrolled}>
                 <StyledContainer>
                     <Brand>
-
-                        <Scrollspy offset={-64} item={["top"]} currentClassName="active">
+                        <Link to='/'>
+                            Leadersnavigator
+                        </Link>
+                        {/* <Scrollspy offset={-64} item={["top"]} currentClassName="active">
                             <AnchorLink href="#top" onClick={this.closeMobileMenu}>
                                 Leadersnavigator
                             </AnchorLink>
 
-                        </Scrollspy>
+                        </Scrollspy> */}
                     </Brand>
                     <Mobile>
                         <button
