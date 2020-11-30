@@ -8,30 +8,33 @@ exports.createPages = async ({ actions, graphql }) => {
   const articles = await graphql(`
     {
       allNodeArticle {
-        nodes {
-          title
-          id
-          created
-          body {
-            processed
-          }
-          field_image {
-            alt
-          }
-          path {
-            alias
+        edges {
+          node {
+            id
+            title
+            path {
+              alias
+            }
+            body {
+              processed
+              summary
+            }
+            field_image {
+              alt
+              title
+            }
           }
         }
       }
     }
   `)
 
-  articles.data.allNodeArticle.nodes.map(articleData =>
+  articles.data.allNodeArticle.edges.map(articleData =>
     createPage({
-      path: articleData.path.alias,
+      path: articleData.node.path.alias,
       component: path.resolve(`src/templates/article.js`),
       context: {
-        ArticleId: articleData.id,
+        ArticleId: articleData.node.id,
       },
     })
   )

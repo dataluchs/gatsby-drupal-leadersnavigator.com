@@ -66,6 +66,9 @@ h1 {
   margin: .67em 0;
   font-family: 'Noto Sans JP', sans-serif!important;
 }
+h3 {
+  font-family: 'Noto Sans JP', sans-serif!important;
+}
 mark {
   background-color: #ff0;
   color: #000;
