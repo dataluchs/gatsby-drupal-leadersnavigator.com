@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import { Link } from "gatsby"
 import Img from 'gatsby-image'
 import styled from "styled-components"
-
+import ButtonCard from '../Global'
 
 const DefinitionCard = ({ title, path, image, alt, summary, istring }) => (
     <DefinitionContainerWrapper>
@@ -12,8 +12,15 @@ const DefinitionCard = ({ title, path, image, alt, summary, istring }) => (
                 <h3>{title}</h3>
             </Link>
             <Img fluid={image} alt={alt} />
-            <p> {istring} </p>
-            <div dangerouslySetInnerHTML={{ __html: summary }} />
+
+            <p>
+                <div dangerouslySetInnerHTML={{ __html: summary }} />
+            </p>
+            <Link to='#'>
+                <ButtonCard>
+                    Explore
+                </ButtonCard>
+            </Link>
         </div>
     </DefinitionContainerWrapper>
 )
@@ -42,5 +49,9 @@ const DefinitionContainerWrapper = styled.div`
       font-size:1.1rem;
       font-weight:bold;
       line-height:1.3rem;
+  }
+  
+  p {
+      font-size:0.8rem!important;
   }
 `

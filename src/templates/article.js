@@ -4,7 +4,7 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout/Layout"
 import BackgroundImage from "gatsby-background-image"
-import { Container } from '../components/Global'
+import { MainContainerWrapper, Container, LeftSidebarContainer, RightSidebarContainer } from '../components/Global'
 import styled from "styled-components"
 
 
@@ -28,25 +28,42 @@ const Article = ({ data }) => {
         </Container>
       </ArticleHeaderWrapper >
 
+  <MainContainerWrapper>
+      {/* <LeftSidebarContainer> 
+      <DefinitionContainer>
+        <h3>Addtional Content</h3>
+        <p>afdsdf sdfsdf sdf asdh tjgfh fgh fgdfg sdfsdgfdfgdfh ghfjhjghfjghfjf dfg.</p>
+      </DefinitionContainer>
+       </LeftSidebarContainer> */}
+      
+      
+          <div>
+          <Container>
+            <ArticleTitleImageWrapper>
+              <img
+                src={post.relationships.field_image.localFile.publicURL}
+                alt={post.field_image.alt}
+              />
+            </ArticleTitleImageWrapper>
+          </Container>
 
-      <Container>
-        <ArticleTitleImageWrapper>
-          <img
-            src={post.relationships.field_image.localFile.publicURL}
-            alt={post.field_image.alt}
-          />
-        </ArticleTitleImageWrapper>
-      </Container>
-
-      <Container>
-        <InnerTextContainer>
-          <TextSummaryContainer>
-            <h3>Executive Summary</h3>
-            <div dangerouslySetInnerHTML={{ __html: post.body.summary }} />
-          </TextSummaryContainer>
-          <div dangerouslySetInnerHTML={{ __html: post.body.processed }} />
-        </InnerTextContainer>
-      </Container>
+          <Container>
+            <InnerTextContainer>
+              <TextSummaryContainer>
+                <h3>Executive Summary</h3>
+                <div dangerouslySetInnerHTML={{ __html: post.body.summary }} />
+              </TextSummaryContainer>
+              <div dangerouslySetInnerHTML={{ __html: post.body.processed }} />
+            </InnerTextContainer>
+          </Container>
+          </div>
+          <RightSidebarContainer> 
+      <DefinitionContainer>
+        <h3>Addtional Content</h3>
+        <p>afdsdf sdfsdf sdf asdh tjgfh fgh fgdfg sdfsdgfdfgdfh ghfjhjghfjghfjf dfg.</p>
+      </DefinitionContainer>
+       </RightSidebarContainer>
+      </MainContainerWrapper>
 
 
     </Layout >
@@ -79,7 +96,7 @@ export const query = graphql`
             childImageSharp {
               fluid(maxWidth: 600) {
                 ...GatsbyImageSharpFluid
-              }
+              } 
             }
           }
           
@@ -91,24 +108,45 @@ export const query = graphql`
 
 export default Article
 
+const DefinitionContainer = styled.div`
+  padding: 30px;
+  border: 1px solid rgb(221, 221, 221);
+  background: rgb(255, 255, 255) none repeat scroll 0% 0%;
+  border-radius: 9px;
+  box-shadow: 4px 4px 10px rgba(150,150,150,0.2);
+  margin-top: -60px;
+
+  h3 {
+    font-size:1.1rem;
+    line-height: 1.2rem;
+  }
+  p {
+    font-size: 0.9rem;
+  }  
+`
+
 const ArticleHeaderWrapper = styled.header`
-background-color: #ffffff;
-background-image: url("data:image/svg+xml,%3Csvg width='12' height='16' viewBox='0 0 12 16' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M4 .99C4 .445 4.444 0 5 0c.552 0 1 .45 1 .99v4.02C6 5.555 5.556 6 5 6c-.552 0-1-.45-1-.99V.99zm6 8c0-.546.444-.99 1-.99.552 0 1 .45 1 .99v4.02c0 .546-.444.99-1 .99-.552 0-1-.45-1-.99V8.99z' fill='%23cfcfcf' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
-  padding: 45px 20px;
+  background: #1488CC;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2B32B2, #1488CC);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2B32B2, #1488CC); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding-top:120px;
+  padding-bottom: 150px;
   position: relative;
   z-index:-1;
-  padding-bottom:50px;
+  
   
   h1 {
-    font-size:2rem;
+    color: #fff;
+    font-size:1.6rem;
     line-height:2.2rem;
+    border-bottom:1px solid rgba(230,230,230,0.1);
+    padding:50px 0px;
   }
 
   @media (min-width: ${props => props.theme.screen.md}) {
-    padding:100px 0px;
     h1 {
-      font-size:3.5rem;
-      line-height:3.7rem;
+      font-size:2.9rem;
+      line-height:3.2rem;
     }
   }
 
@@ -119,14 +157,16 @@ background-image: url("data:image/svg+xml,%3Csvg width='12' height='16' viewBox=
 
 const ArticleTitleImageWrapper = styled.div`
   display: flex;
-  margin-top: -30px;
+  padding:10px;
+  margin-top: -120px;
   z-index:2;
 
   img {
     border-radius:8px;
     max-width: 100%;
     margin: 0 auto;
-    box-shadow: 0 8px 6px -6px rgba(0,0,0,0.6);
+    box-shadow: -10px -10px 30px 4px rgba(0,0,0,0.2),
+              10px 10px 30px 4px rgba(45,78,255,0.25);
   }
 `
 

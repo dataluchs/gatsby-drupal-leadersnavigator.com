@@ -62,12 +62,16 @@ export default Header
 
 
 const HeaderWrapper = styled.header`
-background: #0F2027;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-padding: 100px 0px;
-z-index:-1;
+  background: #4776E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #8E54E9, #4776E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8E54E9, #4776E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 100px 0px;
+  padding-top:150px;
+  z-index:-1;
   position: relative;
+  h1 {
+    color:#111;
+  }
   
   @media (max-width: ${props => props.theme.screen.md}) {
   }
@@ -107,7 +111,7 @@ const HeaderTextGroup = styled.div`
     padding-top:10px;
     line-height: 3.1rem;
     font-size: 2.4rem;
-    font-weight: 500;
+    font-weight: 900;
     color: ${props => props.theme.color.white.regular};
      @media only screen and (max-width:480px) {
     font-size: 1.7rem;

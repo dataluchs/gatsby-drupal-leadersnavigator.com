@@ -3,17 +3,18 @@ import styled from "styled-components"
 import { Container } from '../Global'
 
 export const Nav = styled.nav`
-border-bottom: 1px solid #ddd;
+border-bottom: 1px solid rgba(230,230,230,0.1);
   padding: ${props => (props.scrolled ? `16px 0` : `24px 0`)};
   position: fixed;
   width: 100%;
   top: 0;
   z-index: 1000;
-  background: ${props => (props.scrolled ? `white` : null)};
-  transition: 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background: ${props => (props.scrolled ? `#fff` : null)};
+  transition: 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
 
   a {
-    color: ${props => (props.scrolled ? `#000!important` : `#000!important`)};
+    color: ${props => (props.scrolled ? `#000!important` : `#fff!important`)};
+    font-size:0.7rem;
   }
 `
 

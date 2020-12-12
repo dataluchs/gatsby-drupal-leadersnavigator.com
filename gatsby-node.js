@@ -40,32 +40,32 @@ exports.createPages = async ({ actions, graphql }) => {
   )
 
 
-  // create pages for definitions
-  const definitions = await graphql(`
-    {
-      allNodeDefinitions {
-        nodes {
-          title
-          id
-          created
-          body {
-            processed
-            summary
-          }
-        }
-      }
-    }
-  `)
+  // // create pages for definitions
+  // const definitions = await graphql(`
+  //   {
+  //     allNodeDefinitions {
+  //       nodes {
+  //         title
+  //         id
+  //         created
+  //         body {
+  //           processed
+  //           summary
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
 
-  definitions.data.allNodeDefinitions.nodes.map(definitionData =>
-    createPage({
-      path: definitionsData.path.alias,
-      component: path.resolve(`src/templates/definition.js`),
-      context: {
-        DefinitionId: definitionData.id,
-      },
-    })
-  )
+  // definitions.data.allNodeDefinitions.nodes.map(definitionData =>
+  //   createPage({
+  //     path: definitionsData.path.alias,
+  //     component: path.resolve(`src/templates/definition.js`),
+  //     context: {
+  //       DefinitionId: definitionData.id,
+  //     },
+  //   })
+  // )
 }
 
 

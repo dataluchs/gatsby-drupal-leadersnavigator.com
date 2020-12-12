@@ -19,9 +19,7 @@ const Layout = ({ children, data }) => (
     <>
       <GlobalStyles />
       <Navigation />
-      <div style={{
-        marginTop: 85
-      }}>
+      <div>
         {children}
       </div>
       <MainFooter />
