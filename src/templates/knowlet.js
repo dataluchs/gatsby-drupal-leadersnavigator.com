@@ -1,6 +1,6 @@
 import React from "react"
 import PropTypes from "prop-types"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 
 import Layout from "../components/layout/Layout"
 import BackgroundImage from "gatsby-background-image"
@@ -22,6 +22,20 @@ const Knowlet = ({ data }) => {
             typeSpeed={50}
           />
         </h1>
+        {knowlet.relationships.field_topic.map(i => (
+          <Link to={i.path.alias}>
+            <p style={{
+              color: '#fff',
+              display: 'inline-block',
+              padding: '3px 13px',
+              margin: 5,
+              borderRadius: 16,
+              border: '1px solid #fff',
+              fontSize: '0.7rem'
+            }}>{i.name}</p>
+          </Link>
+        ))}
+
         {/* <h1>All about .. {knowlet.title} </h1> */}
       </KnowletHeaderWrapper>
       <GradientBorder />
@@ -29,6 +43,24 @@ const Knowlet = ({ data }) => {
         <InnerTextContainer>
           <div dangerouslySetInnerHTML={{ __html: knowlet.body.processed }} />
         </InnerTextContainer>
+
+        <hr />
+
+        <h3> Connected Articles </h3>
+        <hr />
+        {knowlet.relationships.field_connected_articles.map(article => (
+          <Link to={article.path.alias}>
+            <div style={{
+              padding: 30, border: '1px solid #ddd',
+              borderRadius: 8, margin: 10
+            }}>
+              <h5> {article.title} </h5>
+              <h5> {article.created} </h5>
+            </div>
+          </Link>
+        ))}
+
+        <h3> Additional Content </h3>
       </Container>
 
     </Layout>
@@ -56,6 +88,23 @@ export const query = graphql`
         field_image {
             alt
         }
+        relationships {
+          field_topic {
+            id
+            name
+            path {
+              alias
+            }
+          }
+      field_connected_articles {
+          title
+          id
+          created
+          path {
+            alias
+          }
+        }
+    }
     }
   }
 `
@@ -168,7 +217,7 @@ display: flex;
   background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
   border-radius: calc(2 * var(--borderWidth));
   z-index: -1;
-  animation: animatedgradient 7s ease alternate infinite;
+  animation: animatedgradient 5s ease alternate infinite;
   background-size: 300% 300%;
   }
 

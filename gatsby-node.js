@@ -55,6 +55,23 @@ exports.createPages = async ({ actions, graphql }) => {
         path {
           alias
         }
+        relationships {
+          field_topic {
+            id
+            name
+            path {
+              alias
+            }
+          }
+          field_connected_articles {
+            title
+            id
+            created
+            path {
+              alias
+            }
+          }
+        }
       }
     }
    }
