@@ -10,20 +10,27 @@ import MainFooter from '../components/sections/MainFooter'
 import Carousel from '../components/carousel/Carousel'
 
 import TransitionLink from 'gatsby-plugin-transition-link'
+import KnowletsList from '../components/sections/KnowletsList'
 
 
-const IndexPage = () => (
+const IndexPage = ({ data }) => {
 
-  <Layout>
-    <SEO title="Home" />
-    <Header />
-    
-    
-    <Link to="/page-2/">Go to page 2</Link>
-    <br />
-    <Link to="/articles">Go to articles</Link>
-  </Layout>
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <Header />
+      <KnowletsList />
 
-)
+
+      <Link to="/page-2/">Go to page 2</Link>
+      <br />
+      <Link to="/articles">Go to articles</Link>
+
+
+    </Layout>
+  )
+
+}
+
 
 export default IndexPage

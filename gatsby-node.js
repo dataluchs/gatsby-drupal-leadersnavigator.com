@@ -40,6 +40,37 @@ exports.createPages = async ({ actions, graphql }) => {
   )
 
 
+  // create pages for blog posts
+  const knowlets = await graphql(`
+   {
+    allNodeKnowlet {
+      nodes {
+        created
+        id
+        field_image {
+          alt
+          title
+        }
+        title
+        path {
+          alias
+        }
+      }
+    }
+   }
+ `)
+
+  knowlets.data.allNodeKnowlet.nodes.map(knowletData =>
+    createPage({
+      path: knowletData.path.alias,
+      component: path.resolve(`src/templates/knowlet.js`),
+      context: {
+        ArticleId: knowletData.id,
+      },
+    })
+  )
+
+
   // // create pages for definitions
   // const definitions = await graphql(`
   //   {
