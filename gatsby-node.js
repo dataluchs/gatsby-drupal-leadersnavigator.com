@@ -65,7 +65,7 @@ exports.createPages = async ({ actions, graphql }) => {
       path: knowletData.path.alias,
       component: path.resolve(`src/templates/knowlet.js`),
       context: {
-        ArticleId: knowletData.id,
+        KnowletId: knowletData.id,
       },
     })
   )

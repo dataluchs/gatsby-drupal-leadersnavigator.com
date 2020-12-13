@@ -4,31 +4,39 @@ import { graphql } from "gatsby"
 
 import Layout from "../components/layout/Layout"
 import BackgroundImage from "gatsby-background-image"
-import { MainContainerWrapper, Container, LeftSidebarContainer, RightSidebarContainer } from '../components/Global'
+import { Container, LeftSidebarContainer, RightSidebarContainer } from '../components/Global'
 import styled from "styled-components"
-
+import GlobalStyles from '../styles/GlobalStyles'
+import Typed from 'react-typed';
 
 const Knowlet = ({ data }) => {
 
-    const knowlet = data.nodeKnowlet
+  const knowlet = data.nodeKnowlet
 
-    return (
+  return (
+    <Layout>
+      <KnowletHeaderWrapper>
+        <h1> <span>All about </span>
+          <Typed
+            strings={[knowlet.title]}
+            typeSpeed={50}
+          />
+        </h1>
+        {/* <h1>All about .. {knowlet.title} </h1> */}
+      </KnowletHeaderWrapper>
+      <GradientBorder />
+      <Container>
+        <InnerTextContainer>
+          <div dangerouslySetInnerHTML={{ __html: knowlet.body.processed }} />
+        </InnerTextContainer>
+      </Container>
 
-        <div>
-            <Container>
-                <h1> {knowlet.title} </h1>
-            </Container>
-            <Container>
-                <InnerTextContainer>
-                    <div dangerouslySetInnerHTML={{ __html: knowlet.body.processed }} />
-                </InnerTextContainer>
-            </Container>
-        </div>
-    )
+    </Layout>
+  )
 }
 
 Knowlet.propTypes = {
-    data: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired,
 }
 
 
@@ -54,21 +62,25 @@ export const query = graphql`
 
 export default Knowlet
 
-const DefinitionContainer = styled.div`
-  padding: 30px;
-  border: 1px solid rgb(221, 221, 221);
-  background: rgb(255, 255, 255) none repeat scroll 0% 0%;
-  border-radius: 9px;
-  box-shadow: 4px 4px 10px rgba(150,150,150,0.2);
-  margin-top: -60px;
-
-  h3 {
-    font-size:1.1rem;
-    line-height: 1.2rem;
+const KnowletHeaderWrapper = styled.header`
+  background: #4776E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #8E54E9, #4776E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8E54E9, #4776E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 50px 0px;
+  padding-top:180px;
+  z-index:-1;
+  position: relative;
+  text-align: center;
+  h1 {
+    color:#fff;
   }
-  p {
-    font-size: 0.9rem;
-  }  
+  
+  @media (max-width: ${props => props.theme.screen.md}) {
+  }
+
+  @media only screen and (min-width:1440px) {
+    max-height: 66vh;
+  }
 `
 
 const ArticleHeaderWrapper = styled.header`
@@ -134,3 +146,42 @@ const TextSummaryContainer = styled.div`
     font-size:1.4rem;
   }
 `
+
+const GradientBorder = styled.div`
+display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  font-family: 'Raleway';
+  font-size: 2.5rem;
+  --borderWidth: 2px;
+  position: relative;
+  border-radius: var(--borderWidth);
+
+  &:after {
+    content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  height: calc(100% + var(--borderWidth) * 2);
+  width: calc(100% + var(--borderWidth) * 2);
+  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
+  border-radius: calc(2 * var(--borderWidth));
+  z-index: -1;
+  animation: animatedgradient 7s ease alternate infinite;
+  background-size: 300% 300%;
+  }
+
+  @keyframes animatedgradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+  `

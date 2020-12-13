@@ -18,6 +18,25 @@ const KnowletCard = ({ title, description, image, path }) => {
 }
 
 
+// #4252b2
+// #649c73
+
+// #e1bb6f
+// #5b9abf
+
+// #e9da6a
+// #5dc2bb
+
+// #369d95
+
+// #a5bbce
+// #65a79f
+
+// #d4d9d1
+// #489fa5
+
+// #34b48f
+// #dee6cb
 
 KnowletCard.propTypes = {
     title: PropTypes.string.isRequired,

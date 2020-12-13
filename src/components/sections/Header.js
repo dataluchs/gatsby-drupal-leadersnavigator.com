@@ -5,28 +5,19 @@ import Img from "gatsby-image"
 import { Container } from "../Global"
 import Typed from 'react-typed';
 import 'react-typed/dist/animatedCursor.css';
+
+
 const Header = () => {
-
-
-  //     const data = useStaticQuery(graphql`
-  //     query {
-  //       file(sourceInstanceName: { eq: "product" }, name: { eq: "green-skew" }) {
-  //         childImageSharp {
-  //           fluid(maxWidth: 1000) {
-  //             ...GatsbyImageSharpFluid_tracedSVG
-  //           }
-  //         }
-  //       }
-  //     }
-  //   `)
-
 
   return (
     <HeaderWrapper id="top">
+      <a href="/"> testlink </a>
+      <Link to="/contact/">Contact</Link>
       <Container>
         <Flex>
           <HeaderTextGroup>
             {/* <Subtitle> </Subtitle> */}
+
             <h1> Your knowledge hub <br />
                         for <span>
                 <Typed

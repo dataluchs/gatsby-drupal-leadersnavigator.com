@@ -88,7 +88,8 @@ export default class Navigation extends Component {
                             <img style={{
                                 maxWidth: 200,
                                 marginBottom: 0
-                            }} src={logo} alt="Logo" /> </Link>
+                            }} src={logo} alt="Logo" />
+                        </Link>
                         {/* <Scrollspy offset={-64} item={["top"]} currentClassName="active">
                             <AnchorLink href="#top" onClick={this.closeMobileMenu}>
                                 Leadersnavigator
