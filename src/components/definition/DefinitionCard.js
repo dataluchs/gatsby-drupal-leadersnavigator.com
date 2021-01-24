@@ -5,6 +5,7 @@ import Img from 'gatsby-image'
 import styled from "styled-components"
 import ButtonCard from '../Global'
 
+
 const DefinitionCard = ({ title, path, image, alt, summary, istring }) => (
     <DefinitionContainerWrapper>
         <div>
@@ -40,7 +41,7 @@ const DefinitionContainerWrapper = styled.div`
   background: #fff;
   padding:20px;
   margin:30px;
-  box-shadow: 0 8px 26px -6px rgba(0,0,0,0.1);
+  box-shadow: 0 8px 26px -6px rgba(0,0,0,0.2);
   @media (max-width: ${props => props.theme.screen.md}) {
     justify-self: center;
   }
